@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Users, Menu, BarChart, } from "lucide-react";
+import { Users, Menu, BarChart, Pencil, Eye } from "lucide-react";
 
 export default function DashboardLayout({
   children,
@@ -15,13 +15,15 @@ export default function DashboardLayout({
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const navItems = [
-    { href: "/dashboard", icon: Users, label: "Team" },
-    { href: "/dashboard/statistic", icon: BarChart, label: "Stadistic" },
-   
+    { href: "/dashboard", icon: Users, label: "Tu dominio" },
+    { href: "/dashboard/statistic", icon: BarChart, label: "Estadisticas" },
+    { href: "/dashboard/createpost", icon: Pencil, label: "Crear Publicacion" },
+    { href: "/dashboard/posts", icon: Eye, label: "Publicaciones" },
+    { href: "/dashboard/profile", icon: Eye, label: "Perfil" }, 
   ];
 
   return (
-    <div className="flex flex-col min-h-[calc(100dvh-68px)] max-w-7xl mx-auto w-full">
+    <div className="flex flex-col max-w-7xl mx-auto w-full">
       {/* Mobile header */}
       <div className="lg:hidden flex items-center justify-between bg-white border-b border-gray-200 p-4">
         <div className="flex items-center">
