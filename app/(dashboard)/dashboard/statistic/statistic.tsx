@@ -3,7 +3,7 @@ import { Users } from "lucide-react"
 
 export default function Component() {
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full max-w-md">
       <Card className="bg-white shadow-lg">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-2xl font-bold">Visitas a Publicaciones</CardTitle>

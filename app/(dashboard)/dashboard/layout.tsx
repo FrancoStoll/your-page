@@ -19,8 +19,10 @@ export default function DashboardLayout({
     { href: "/dashboard/statistic", icon: BarChart, label: "Estadisticas" },
     { href: "/dashboard/createpost", icon: Pencil, label: "Crear Publicacion" },
     { href: "/dashboard/posts", icon: Eye, label: "Publicaciones" },
-    { href: "/dashboard/profile", icon: Eye, label: "Perfil" }, 
+    { href: "/dashboard/profile", icon: Eye, label: "Perfil" },
   ];
+
+  
 
   return (
     <div className="flex flex-col max-w-7xl mx-auto w-full">
@@ -42,7 +44,7 @@ export default function DashboardLayout({
       <div className="flex flex-1 overflow-hidden h-full">
         {/* Sidebar */}
         <aside
-          className={`w-64 bg-white lg:bg-gray-50 border-r border-gray-200 lg:block ${
+          className={`w-64 bg-white lg:bg-gray-50 border-r  border-gray-200 lg:block ${
             isSidebarOpen ? "block" : "hidden"
           } lg:relative absolute inset-y-0 left-0 z-40 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"

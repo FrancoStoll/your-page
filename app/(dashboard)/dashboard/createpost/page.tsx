@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { createPost } from "@/lib/actions/posts/posts.actions";
+import { ActionState } from "@/lib/auth/middleware";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useActionState, useEffect } from "react";
 
 export default function CreatePost({
   searchParams: { success },
@@ -17,6 +19,11 @@ export default function CreatePost({
   const router = useRouter();
 
   const isSuccess = success === "true";
+
+  const [state, formData, pending] = useActionState<ActionState, FormData>(
+    createPost,
+    { error: "", success: "" }
+  );
 
   return (
     <>
@@ -52,7 +59,7 @@ export default function CreatePost({
           </div>
 
           <form
-            action=""
+            action={formData}
             className="flex flex-col justify-center shadow-md padding-dynamic rounded-md space-y-4"
           >
             <div className="flex flex-col space-y-2">
@@ -92,20 +99,25 @@ export default function CreatePost({
                   id="price"
                   name="price"
                   className="w-fit"
+                  type="number"
                 />
                 <Button
-                  // TODO: PASARLO A SUBMIT Y TERMINAR EL FORMULARIO
                   variant="default"
-                  type="button"
+                  type="submit"
                   className="w-fit self-end bg-orange-500 hover:bg-orange-600 transition-colors"
-                  onClick={() =>
-                    router.replace("/dashboard/createpost?success=true")
-                  }
                 >
                   Crear publicacion
                 </Button>
               </div>
             </div>
+            <p
+              className={`text-sm ${
+                state.success ? "text-green-500" : "text-red-500"
+              }  text-center`}
+            >
+              {state.success && state.success}
+              {state?.error && state.error}
+            </p>
           </form>
         </div>
       )}

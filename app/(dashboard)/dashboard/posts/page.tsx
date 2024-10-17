@@ -6,242 +6,54 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { PanelsTopLeft, CheckCircle } from "lucide-react";
+import { getPosts } from "@/lib/actions/posts/posts.actions";
+import {
+  PanelsTopLeft,
+  CheckCircle,
+  DollarSign,
+  BadgeDollarSign,
+} from "lucide-react";
 
-export default function PostsPage() {
+export default async function PostsPage() {
+  const posts = await getPosts();
+
   return (
-    <div className="w-full h-[vh] mx-auto p-4 space-y-4 overflow-y-scroll remove-scrollbar">
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle className="flex items-center text-base">
-            <span className="text-orange-500 font-black">
-              Titulo de producto
-            </span>
-          </CardTitle>
-          <CardDescription>Creado el 15 de octubre, 2024</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-              <span className="text-sm text-muted-foreground">Activo</span>
-            </div>
-            <Badge variant="outline" className="bg-pink-100 text-pink-800">
-              www.nuestrodominio/tudominio.com
-            </Badge>
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Esta es texto de relleno para este producto que no tiene descripcion
-            todavia. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle className="flex items-center text-base">
-            <span className="text-orange-500 font-black">
-              Titulo de producto
-            </span>
-          </CardTitle>
-          <CardDescription>Creado el 15 de octubre, 2024</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-              <span className="text-sm text-muted-foreground">Activo</span>
-            </div>
-            <Badge variant="outline" className="bg-pink-100 text-pink-800">
-              www.nuestrodominio/tudominio.com
-            </Badge>
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Esta es texto de relleno para este producto que no tiene descripcion
-            todavia. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle className="flex items-center text-base">
-            <span className="text-orange-500 font-black">
-              Titulo de producto
-            </span>
-          </CardTitle>
-          <CardDescription>Creado el 15 de octubre, 2024</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-              <span className="text-sm text-muted-foreground">Activo</span>
-            </div>
-            <Badge variant="outline" className="bg-pink-100 text-pink-800">
-              www.nuestrodominio/tudominio.com
-            </Badge>
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Esta es texto de relleno para este producto que no tiene descripcion
-            todavia. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle className="flex items-center text-base">
-            <span className="text-orange-500 font-black">
-              Titulo de producto
-            </span>
-          </CardTitle>
-          <CardDescription>Creado el 15 de octubre, 2024</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-              <span className="text-sm text-muted-foreground">Activo</span>
-            </div>
-            <Badge variant="outline" className="bg-pink-100 text-pink-800">
-              www.nuestrodominio/tudominio.com
-            </Badge>
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Esta es texto de relleno para este producto que no tiene descripcion
-            todavia. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle className="flex items-center text-base">
-            <span className="text-orange-500 font-black">
-              Titulo de producto
-            </span>
-          </CardTitle>
-          <CardDescription>Creado el 15 de octubre, 2024</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-              <span className="text-sm text-muted-foreground">Activo</span>
-            </div>
-            <Badge variant="outline" className="bg-pink-100 text-pink-800">
-              www.nuestrodominio/tudominio.com
-            </Badge>
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Esta es texto de relleno para este producto que no tiene descripcion
-            todavia. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle className="flex items-center text-base">
-            <span className="text-orange-500 font-black">
-              Titulo de producto
-            </span>
-          </CardTitle>
-          <CardDescription>Creado el 15 de octubre, 2024</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-              <span className="text-sm text-muted-foreground">Activo</span>
-            </div>
-            <Badge variant="outline" className="bg-pink-100 text-pink-800">
-              www.nuestrodominio/tudominio.com
-            </Badge>
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Esta es texto de relleno para este producto que no tiene descripcion
-            todavia. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle className="flex items-center text-base">
-            <span className="text-orange-500 font-black">
-              Titulo de producto
-            </span>
-          </CardTitle>
-          <CardDescription>Creado el 15 de octubre, 2024</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-              <span className="text-sm text-muted-foreground">Activo</span>
-            </div>
-            <Badge variant="outline" className="bg-pink-100 text-pink-800">
-              www.nuestrodominio/tudominio.com
-            </Badge>
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Esta es texto de relleno para este producto que no tiene descripcion
-            todavia. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle className="flex items-center text-base">
-            <span className="text-orange-500 font-black">
-              Titulo de producto
-            </span>
-          </CardTitle>
-          <CardDescription>Creado el 15 de octubre, 2024</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-              <span className="text-sm text-muted-foreground">Activo</span>
-            </div>
-            <Badge variant="outline" className="bg-pink-100 text-pink-800">
-              www.nuestrodominio/tudominio.com
-            </Badge>
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Esta es texto de relleno para este producto que no tiene descripcion
-            todavia. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto. Este texto debe ser reemplazado por la descripcion del
-            producto.
-          </p>
-        </CardContent>
-      </Card>
+    <div className="w-full h-[89vh] mx-auto p-4 space-y-4 overflow-y-scroll remove-scrollbar">
+      {posts && posts.length > 0 ? (
+        posts.map((post) => (
+          <Card className="w-full" key={post.id}>
+            <CardHeader>
+              <CardTitle className="flex items-center text-base">
+                <span className="text-orange-500 font-black">{post.title}</span>
+              </CardTitle>
+              <CardDescription>
+                Creado el {new Date(post.createdAt).toLocaleDateString()}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <BadgeDollarSign className="mr-1 h-5 w-5 text-green-500" />
+                  <span className="text-sm text-muted-foreground">
+                    Precio de la publicación{" "}
+                    <span className="text-normal font-bold text-orange-500">
+                      {post.price}
+                    </span>
+                  </span>
+                </div>
+                <Badge variant="outline" className="bg-pink-100 text-pink-800">
+                  www.nuestrodominio/tudominio.com
+                </Badge>
+              </div>
+              <p className="mt-4 text-sm text-muted-foreground">
+                {post.description}
+              </p>
+            </CardContent>
+          </Card>
+        ))
+      ) : (
+        <p>No hay posts</p>
+      )}
 
       <p className="h-full mt-10 font-light text-right">
         Proximamente publicaciones con imagenes...

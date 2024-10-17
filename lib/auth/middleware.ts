@@ -53,8 +53,17 @@ export function validatedActionWithUser<S extends z.ZodType<any, any>, T>(
       throw new Error('User is not authenticated'); // Lanza un error si no hay usuario autenticado
     }
 
+
+
+
+    
+    const formDataObject = Object.fromEntries(formData);
+
+  
+
     // Valida los datos del formulario
-    const result = schema.safeParse(Object.fromEntries(formData));
+    const result = schema.safeParse(formDataObject);
+ 
     if (!result.success) {
       // Retorna un mensaje de error si la validación falla
       return { error: result.error.errors[0].message } as T;

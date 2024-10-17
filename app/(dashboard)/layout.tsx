@@ -1,19 +1,20 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { CircleIcon, Home, LogOut } from 'lucide-react';
+import Link from "next/link";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { AlignStartHorizontalIcon, Home, LogOut } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useUser } from '@/lib/auth';
-import { signOut } from '@/app/(login)/actions';
-import { useRouter } from 'next/navigation';
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useUser } from "@/lib/auth";
+import { signOut } from "@/app/(login)/actions";
+import { useRouter } from "next/navigation";
+import { Toaster } from "@/components/ui/toaster";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,33 +24,46 @@ function Header() {
   async function handleSignOut() {
     setUser(null);
     await signOut();
-    router.push('/');
+    router.push("/");
   }
 
   return (
-    <header className="border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center">
-          <CircleIcon className="h-6 w-6 text-orange-500" />
-          <span className="ml-2 text-xl font-semibold text-gray-900">ACME</span>
-        </Link>
-        <div className="flex items-center space-x-4">
-          <Link
-            href="/pricing"
-            className="text-sm font-medium text-gray-700 hover:text-gray-900"
-          >
-            Pricing
-          </Link>
+    <header className="bg-transparent text-white p-4">
+      <div className="container mx-auto flex justify-between items-center">
+        <h1 className="text-2xl font-bold">PerfilYa!</h1>
+        <nav className="flex flex-row items-center space-x-3">
+          <ul className="flex space-x-4">
+            <li>
+              <a href="#" className="hover:text-gray-300">
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-gray-300">
+                Características
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-gray-300">
+                Precios
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-gray-300">
+                Contacto
+              </a>
+            </li>
+          </ul>
           {user ? (
             <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <DropdownMenuTrigger asChild>
                 <Avatar className="cursor-pointer size-9">
-                  <AvatarImage alt={user.name || ''} />
-                  <AvatarFallback>
+                  <AvatarImage alt={user.name || ""} />
+                  <AvatarFallback className="bg-transparent border-2 border-indigo-800">
                     {user.email
-                      .split(' ')
+                      .split(" ")
                       .map((n) => n[0])
-                      .join('')}
+                      .join("")}
                   </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
@@ -78,7 +92,7 @@ function Header() {
               <Link href="/sign-up">Sign Up</Link>
             </Button>
           )}
-        </div>
+        </nav>
       </div>
     </header>
   );
@@ -86,9 +100,10 @@ function Header() {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <section className="flex flex-col min-h-screen">
+    <section className="flex flex-col min-h-screen bg-gradient-to-br from-blue-500 to-purple-600">
       <Header />
       {children}
+      <Toaster />
     </section>
   );
 }

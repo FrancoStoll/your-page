@@ -20,7 +20,12 @@ export default async function SettingsPage() {
         {domain ? "Adminitra tus dominios" : "Crea tu dominio"}
       </h1>
 
-      {domain ? <DomainCard  {...domain}/> : <CreateDomainForm />}
+      {domain ? <DomainCard {...domain} /> : <CreateDomainForm />}
+
+      <p className="p-4 tracking-normal text-sm text-muted-foreground">
+        Recuerda completar tu perfil para que potenciales clientes puedan
+        contactarte
+      </p>
     </div>
   );
 }

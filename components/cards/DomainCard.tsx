@@ -8,15 +8,17 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Globe, CheckCircle, PanelsTopLeft } from "lucide-react";
 import { DomainSchema } from "@/lib/db/schema";
+import CopyDomain from "./CopyDomain";
 
-export default function DomainCard({id,name,userId}:DomainSchema) {
+export default function DomainCard({ id, name, userId }: DomainSchema) {
   return (
     <div className="w-full mx-auto p-4">
       <Card className="w-full">
         <CardHeader>
           <CardTitle className="flex items-center text-base">
             <PanelsTopLeft className="mr-2 h-5 w-5 text-orange-500" />
-            nuestrodominio/<span className="text-orange-500 font-black">{name}</span>
+            nuestrodominio/
+            <span className="text-orange-500 font-black">{name}</span>
           </CardTitle>
           <CardDescription>Creado el 15 de octubre, 2024</CardDescription>
         </CardHeader>
@@ -35,6 +37,7 @@ export default function DomainCard({id,name,userId}:DomainSchema) {
           </p>
         </CardContent>
       </Card>
+      <CopyDomain />
     </div>
   );
 }

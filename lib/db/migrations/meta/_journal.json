@@ -8,6 +8,27 @@
       "when": 1729000129723,
       "tag": "0000_uneven_pandemic",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1729082257366,
+      "tag": "0001_regular_iron_fist",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1729083200891,
+      "tag": "0002_easy_hobgoblin",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1729117844302,
+      "tag": "0003_eminent_lorna_dane",
+      "breakpoints": true
     }
   ]
 }
