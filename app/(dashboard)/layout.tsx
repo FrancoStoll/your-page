@@ -28,30 +28,31 @@ function Header() {
   }
 
   return (
-    <header className="bg-transparent text-white p-4">
+    <header className="bg-transparent text-black p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">PerfilYa!</h1>
+        <h1 className="text-2xl font-bold text-black">PerfilYa!</h1>
         <nav className="flex flex-row items-center space-x-3">
           <ul className="flex space-x-4">
             <li>
-              <a href="#" className="hover:text-gray-300">
+              <Link href="/" className="hover:text-black-300 text-black">
                 Inicio
-              </a>
+              </Link>
+                
             </li>
             <li>
-              <a href="#" className="hover:text-gray-300">
+              <Link href="/features" className="hover:text-black-300 text-black">
                 Características
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-gray-300">
+              <Link href="/pricing" className="hover:text-black-300 text-black">
                 Precios
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-gray-300">
+              <Link href="/contact" className="hover:text-black-300 text-black">
                 Contacto
-              </a>
+              </Link>
             </li>
           </ul>
           {user ? (
@@ -59,7 +60,7 @@ function Header() {
               <DropdownMenuTrigger asChild>
                 <Avatar className="cursor-pointer size-9">
                   <AvatarImage alt={user.name || ""} />
-                  <AvatarFallback className="bg-transparent border-2 border-indigo-800">
+                  <AvatarFallback className="bg-transparent border-2 border-indigo-800 text-black">
                     {user.email
                       .split(" ")
                       .map((n) => n[0])
@@ -87,7 +88,7 @@ function Header() {
           ) : (
             <Button
               asChild
-              className="bg-black hover:bg-gray-800 text-white text-sm px-4 py-2 rounded-full"
+              className="bg-black hover:bg-black-800 text-white text-sm px-4 py-2 rounded-full"
             >
               <Link href="/sign-up">Sign Up</Link>
             </Button>
@@ -100,7 +101,7 @@ function Header() {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <section className="flex flex-col min-h-screen bg-gradient-to-br from-blue-500 to-purple-600">
+    <section className="flex flex-col min-h-screen">
       <Header />
       {children}
       <Toaster />

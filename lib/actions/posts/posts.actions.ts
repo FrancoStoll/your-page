@@ -66,3 +66,5 @@ export const getPosts = async () => {
     return postsDb
 
 }
+
+

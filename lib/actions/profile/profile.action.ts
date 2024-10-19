@@ -3,7 +3,7 @@
 import { validatedAction, validatedActionWithUser } from "@/lib/auth/middleware";
 import { db } from "@/lib/db/drizzle";
 import { getUser } from "@/lib/db/queries";
-import { NewProfile, profiles, ProfileSchema } from "@/lib/db/schema";
+import { domains, NewProfile, posts, profiles, ProfileSchema, users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -50,8 +50,23 @@ export const getProfile = async () => {
     const user = await getUser();
     if (!user) return null
     const profile = await db.select().from(profiles).where(eq(profiles.userId, user.id)).limit(1)
-    if(!profile) return null
+    if (!profile) return null
     return profile[0]
+
+
+}
+
+
+export const getDomainByName = async (name: string) => {
+
+
+
+    // Search domain and user
+    const domain = await db.select().from(domains).where(eq(domains.name, name)).leftJoin(users, eq(domains.userId, users.id)).leftJoin(posts, eq(domains.userId, posts.userId)).leftJoin(profiles, eq(domains.userId, profiles.userId)).limit(1)
+
+    if (!domain) return null
+    return domain[0]
+
 
 
 }

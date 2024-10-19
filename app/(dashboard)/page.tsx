@@ -20,10 +20,10 @@ export default function HomePage() {
         <main className="flex-grow container mx-auto px-4 py-8 mt-20">
           {/* Hero Section */}
           <section className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-white">
+            <h2 className="text-4xl font-bold mb-4 text-black">
               Bienvenido a PerfilYa!
             </h2>
-            <p className="text-xl mb-8 text-white">
+            <p className="text-xl mb-8 text-black">
               Explora, crea y comparte contenido increíble
             </p>
             <div className="flex justify-center space-x-4">
@@ -41,7 +41,7 @@ export default function HomePage() {
 
           {/* Testimonials Section */}
           <section className="mb-16">
-            <h3 className="text-2xl font-bold mb-8 text-center text-white">
+            <h3 className="text-2xl font-bold mb-8 text-center text-black">
               Lo que dicen nuestros usuarios
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

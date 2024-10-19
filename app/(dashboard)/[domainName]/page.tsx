@@ -1,14 +1,24 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
+import { getDomainByName } from "@/lib/actions/profile/profile.action";
+import { getUser } from "@/lib/db/queries";
+import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { Facebook, Instagram } from "lucide-react";
+import { notFound } from "next/navigation";
 
-export default function DomainUserPage({
+export default async function DomainUserPage({
   params,
 }: {
   params: { domainName: string };
 }) {
   console.log(params);
+
+  const domain = await getDomainByName(params.domainName);
+
+  if (!domain) return notFound();
+
+  const user = await getUser();
+  console.log(domain);
 
   return (
     <main className="flex-grow max-w-7xl mx-auto py-8 px-4">
@@ -23,16 +33,13 @@ export default function DomainUserPage({
                 />
               </Avatar>
               <div>
-                <CardTitle className="text-2xl font-bold">
-                  Nombre de Usuario
-                </CardTitle>
-                <p className="text-muted-foreground">@nombreusuario</p>
+                <CardTitle className="text-2xl font-bold">{domain.profiles?.fullName} </CardTitle>
+                <p className="text-muted-foreground">@{domain.profiles?.fullName} </p>
               </div>
             </CardHeader>
             <CardContent>
               <p className="mb-4">
-                Breve descripción del usuario o biografía. Aquí puedes agregar
-                información relevante sobre el perfil.
+                {domain.profiles?.description}
               </p>
               <div className="flex space-x-4">
                 <a
