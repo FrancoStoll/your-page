@@ -1,5 +1,7 @@
+import FeaturesSection from "./feaute-section";
+
 export default function FeaturesPage() {
   return (
-    <div>FeaturesPage</div>
+    <FeaturesSection />
   )
 }

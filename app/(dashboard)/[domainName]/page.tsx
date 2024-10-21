@@ -1,9 +1,12 @@
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { getDomainByName } from "@/lib/actions/profile/profile.action";
 import { getUser } from "@/lib/db/queries";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { Facebook, Instagram } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function DomainUserPage({
@@ -11,15 +14,9 @@ export default async function DomainUserPage({
 }: {
   params: { domainName: string };
 }) {
-  console.log(params);
-
   const domain = await getDomainByName(params.domainName);
 
   if (!domain) return notFound();
-
-  const user = await getUser();
-  console.log(domain);
-
   return (
     <main className="flex-grow max-w-7xl mx-auto py-8 px-4">
       <div className="md:flex md:space-x-8">
@@ -33,14 +30,16 @@ export default async function DomainUserPage({
                 />
               </Avatar>
               <div>
-                <CardTitle className="text-2xl font-bold">{domain.profiles?.fullName} </CardTitle>
-                <p className="text-muted-foreground">@{domain.profiles?.fullName} </p>
+                <CardTitle className="text-2xl font-bold">
+                  {domain.profiles?.fullName}{" "}
+                </CardTitle>
+                <p className="text-muted-foreground">
+                  @{domain.profiles?.fullName}{" "}
+                </p>
               </div>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">
-                {domain.profiles?.description}
-              </p>
+              <p className="mb-4">{domain.profiles?.description}</p>
               <div className="flex space-x-4">
                 <a
                   href="https://facebook.com/nombreusuario"
@@ -71,43 +70,47 @@ export default async function DomainUserPage({
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              {[
-                {
-                  title: "Producto Increíble",
-                  description:
-                    "Este es un producto asombroso que cambiará tu vida. Tiene características únicas y un diseño innovador.",
-                  price: 99.99,
-                  category: "Tecnología",
-                },
-                {
-                  title: "Oferta Especial",
-                  description:
-                    "No te pierdas esta oferta por tiempo limitado. Un producto de alta calidad a un precio inmejorable.",
-                  price: 49.99,
-                  category: "Hogar",
-                },
-              ].map((publicacion, index) => (
+              {domain.posts.map((post, index) => (
                 <Card key={index} className="overflow-hidden">
-                  <div className="md:flex">
-                    <div className="md:w-1/3 bg-muted">
-                      <img
-                        src={`/assets/images/placeholder-product.png`}
-                        alt={`Imagen de ${publicacion.title}`}
-                        className="w-full h-full object-cover"
-                      />
+                  <div className="md:flex relative">
+                    <div className="md:w-1/3 bg-muted flex justify-center">
+                      {post.image ? (
+                        <Image
+                          src={post.image}
+                          alt={`Imagen de ${post.title}`}
+                          className="w-full h-full"
+                          width={1000}
+                          height={1000}
+                        />
+                      ) : (
+                        <Image
+                          src={`/assets/images/placeholder-product.png`}
+                          alt={`Imagen de ${post.title}`}
+                          className="w-full h-full object-contain"
+                          width={200}
+                          height={200}
+                        />
+                      )}
                     </div>
                     <div className="md:w-2/3 p-6">
                       <h3 className="text-xl font-semibold mb-2">
-                        {publicacion.title}
+                        {post.title}
                       </h3>
-                      <Badge className="mb-2">{publicacion.category}</Badge>
+                      <Badge className="mb-2">Nuevo</Badge>
                       <p className="text-muted-foreground mb-4">
-                        {publicacion.description}
+                        {post.description}
                       </p>
                       <p className="text-lg font-bold text-primary">
-                        ${publicacion.price.toFixed(2)}
+                        ${post.price!.toFixed(2)}
                       </p>
                     </div>
+                    <Link
+                      href="https://wa.me/3454473489?text=Hola%20quiero%20más%20información"
+                      className="absolute bottom-4 right-4 bg-black px-4 py-2 text-white rounded-md"
+
+                    >
+                      Pedir mas información
+                    </Link>
                   </div>
                 </Card>
               ))}

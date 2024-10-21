@@ -30,22 +30,36 @@ export const domains = pgTable("domains", {
 
 export const profiles = pgTable("profiles", {
   id: serial("id").primaryKey(),
-  fullName: varchar("fullName", {length:255}).notNull(),
-  instagramUrl: varchar("instagramUrl", {length: 255}),
-  facebookUrl: varchar("facebookUrl", {length: 255}),
-  description: varchar("description", {length: 255}),
+  fullName: varchar("fullName", { length: 255 }).notNull(),
+  instagramUrl: varchar("instagramUrl", { length: 255 }),
+  facebookUrl: varchar("facebookUrl", { length: 255 }),
+  description: varchar("description", { length: 255 }),
   userId: integer("user_id").notNull().references(() => users.id)
 })
 
 
 export const posts = pgTable("posts", {
   id: serial("id").primaryKey(),
-  title: varchar("title", {length: 255}).notNull(),
-  description: varchar("description", {length: 255}),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: varchar("description", { length: 255 }),
   userId: integer("user_id").notNull().references(() => users.id),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   price: integer("price").default(0),
+
 })
+
+export const images = pgTable("images", {
+  id: serial("id").primaryKey(),
+  name: varchar('name', { length: 255 }),
+  userId: integer("user_id").notNull().references(() => users.id),
+  postId: integer("post_id").notNull().references(() => posts.id),
+})
+
+
+// images
+
+export type newImages = typeof images.$inferInsert
+
 
 
 export type User = typeof users.$inferSelect;

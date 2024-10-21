@@ -89,6 +89,12 @@ export default function CreatePost({
                 rows={5}
               />
             </div>
+
+            <div className="flex flex-col space-y-2">
+              <Label className="text-[16px] font-semibold" htmlFor="image">Añade una imagen para mostrar. JPG/PNG</Label>
+              <Input type="file" name="image" id="image" accept="image/*" />
+            </div>
+
             <div className="flex flex-col">
               <Label htmlFor="price" className="text-[16px] font-semibold">
                 Precio del producto (opcional)

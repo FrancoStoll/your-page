@@ -4,6 +4,14 @@ const nextConfig: NextConfig = {
   experimental: {
     ppr: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      }
+    ]
+  }
 };
 
 export default nextConfig;

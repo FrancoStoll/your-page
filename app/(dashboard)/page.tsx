@@ -96,7 +96,7 @@ export default function HomePage() {
         </main>
 
         {/* Footer */}
-        <footer className="bg-gray-800 bg-opacity-75 text-white p-8">
+        <footer className="bg-black bg-opacity-75 text-white p-8">
           <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h4 className="text-xl font-bold mb-4">Sobre Nosotros</h4>

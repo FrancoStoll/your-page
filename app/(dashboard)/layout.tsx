@@ -30,17 +30,21 @@ function Header() {
   return (
     <header className="bg-transparent text-black p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-black">PerfilYa!</h1>
+        <Link href="/" className="flex items-center">
+          <h1 className="text-2xl font-bold text-black">PerfilYa!</h1>
+        </Link>
         <nav className="flex flex-row items-center space-x-3">
           <ul className="flex space-x-4">
             <li>
               <Link href="/" className="hover:text-black-300 text-black">
                 Inicio
               </Link>
-                
             </li>
             <li>
-              <Link href="/features" className="hover:text-black-300 text-black">
+              <Link
+                href="/features"
+                className="hover:text-black-300 text-black"
+              >
                 Características
               </Link>
             </li>

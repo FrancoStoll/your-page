@@ -2,16 +2,16 @@
 
 import { validatedActionWithUser } from "@/lib/auth/middleware"
 import { db } from "@/lib/db/drizzle"
-import { NewPost, posts, } from "@/lib/db/schema"
+import { images, NewPost, posts, } from "@/lib/db/schema"
 import { eq, min } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
 import { title } from "process"
 import { z } from "zod"
 import { getUser } from '@/lib/db/queries';
+import { v2 as cloudinary } from 'cloudinary';
 
 
-
-
+cloudinary.config(process.env.CLOUDINARY_URL ?? '')
 
 
 
@@ -25,6 +25,7 @@ const newPostSchema = z.object({
     price: z.string().default("0"),
 })
 
+// TODO: PASAR TODO A UN ARCHIVO DE QUERIES
 export const createPost = validatedActionWithUser(newPostSchema, async (data, formData, user) => {
 
 
@@ -37,9 +38,25 @@ export const createPost = validatedActionWithUser(newPostSchema, async (data, fo
         userId: user.id
     }
 
-    // TODO: PASAR TODO A UN ARCHIVO DE QUERIES
 
-    await db.insert(posts).values(newPost)
+    const post = await db.insert(posts).values(newPost).returning()
+
+
+
+
+
+
+    const image = formData.get('image')
+    if (image) {
+        const uploadImage = await uploadImageToCloudinary(image as File);
+        await db.insert(images).values({
+            postId: post[0].id,
+            userId: user.id,
+            name: uploadImage,
+        })
+    }
+
+
 
     revalidatePath("/dashboard/createpost")
 
@@ -60,6 +77,7 @@ export const getPosts = async () => {
     const postsDb = await db.query.posts.findMany({
         where: (posts) => eq(posts.userId, id),
         orderBy: (posts, { asc }) => [asc(posts.createdAt)]
+        
     })
 
 
@@ -67,4 +85,24 @@ export const getPosts = async () => {
 
 }
 
+
+const uploadImageToCloudinary = async (image: File) => {
+
+    try {
+
+        const buffer = await image.arrayBuffer();
+
+        const base64Image = Buffer.from(buffer).toString('base64');
+
+        return await cloudinary.uploader.upload(`data:image/png;base64,${base64Image}`, {folder: "perfilya"}).then(r => r.secure_url,)
+
+
+
+    } catch (error) {
+        console.log(error)
+        return null
+
+    }
+
+}
 
