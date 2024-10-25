@@ -11,6 +11,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 
+export const metadata = {
+  title: "Dashboard - Crear publicación",
+  description: "Crear una publicación",
+};
+
 export default function CreatePost({
   searchParams: { success },
 }: {
@@ -38,7 +43,7 @@ export default function CreatePost({
               className=""
             />
             <h2 className="header mb-6 max-w-[600px] text-center">
-              Tu <span className="text-orange-500">publicacion</span> Tu fue
+              Tu <span className="text-blue-500">publicacion</span> Tu fue
               creada correctamente
             </h2>
             <Button
@@ -52,7 +57,7 @@ export default function CreatePost({
       ) : (
         <div className="padding-dynamic space-y-4">
           <div className="">
-            <p className="text-orange-500 font-bold tracking-tight text-xl">
+            <p className="text-blue-500 font-bold tracking-tight text-xl">
               Crea una publicacion y comparte tu pagina con tus amigos o
               clientes
             </p>
@@ -110,7 +115,7 @@ export default function CreatePost({
                 <Button
                   variant="default"
                   type="submit"
-                  className="w-fit self-end bg-orange-500 hover:bg-orange-600 transition-colors"
+                  className="w-fit self-end bg-blue-500 hover:bg-blue-600 transition-colors"
                 >
                   Crear publicacion
                 </Button>

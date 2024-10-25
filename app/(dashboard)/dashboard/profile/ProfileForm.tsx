@@ -34,7 +34,7 @@ export const ProfileForm = ({
   return (
     <div className="padding-dynamic space-y-4">
       <div className="">
-        <p className="text-orange-500 font-bold tracking-tight text-xl">
+        <p className="text-blue-500 font-bold tracking-tight text-xl">
           Crea una publicacion y comparte tu pagina con tus amigos o clientes
         </p>
       </div>
@@ -103,7 +103,7 @@ export const ProfileForm = ({
             // TODO: PASARLO A SUBMIT Y TERMINAR EL FORMULARIO
             variant="default"
             type="submit"
-            className="w-fit self-end bg-orange-500 hover:bg-orange-600 transition-colors"
+            className="w-fit self-end bg-blue-500 hover:bg-blue-600 transition-colors"
           >
             Guardar informacion del perfil
           </Button>

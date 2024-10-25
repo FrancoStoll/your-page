@@ -8,6 +8,11 @@ import {
 import Statistic from "./statistic";
 import { ThumbsUp } from "lucide-react";
 
+export const metadata = {
+  title: "Dashboard - Estadisticas",
+  description: "Estadisticas de tu dominio",
+};
+
 export default function StatisticPage() {
   return (
     <div className="flex flex-wrap flex-row gap-2">

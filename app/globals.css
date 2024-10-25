@@ -85,7 +85,7 @@
 }
 
 .remove-scrollbar::-webkit-scrollbar-thumb {
-  background: rgb(251 146 60);
+  background: rgb(60, 71, 236);
   border-radius: 10px;
 }
 

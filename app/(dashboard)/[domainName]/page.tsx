@@ -81,6 +81,7 @@ export default async function DomainUserPage({
                           className="w-full h-full"
                           width={1000}
                           height={1000}
+                          
                         />
                       ) : (
                         <Image

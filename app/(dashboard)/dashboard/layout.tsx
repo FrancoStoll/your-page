@@ -5,6 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Users, Menu, BarChart, Pencil, Eye } from "lucide-react";
+import type { Metadata } from "next";
+
+
+
+
+
 
 export default function DashboardLayout({
   children,
@@ -21,6 +27,9 @@ export default function DashboardLayout({
     { href: "/dashboard/posts", icon: Eye, label: "Publicaciones" },
     { href: "/dashboard/profile", icon: Eye, label: "Perfil" },
   ];
+
+
+
 
   return (
     <div className="bg-gray-50 w-full min-h-screen">

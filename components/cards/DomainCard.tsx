@@ -16,9 +16,9 @@ export default function DomainCard({ id, name, userId }: DomainSchema) {
       <Card className="w-full">
         <CardHeader>
           <CardTitle className="flex items-center text-base">
-            <PanelsTopLeft className="mr-2 h-5 w-5 text-orange-500" />
+            <PanelsTopLeft className="mr-2 h-5 w-5 text-blue-500" />
             nuestrodominio/
-            <span className="text-orange-500 font-black">{name}</span>
+            <span className="text-blue-500 font-black">{name}</span>
           </CardTitle>
           <CardDescription>Creado el 15 de octubre, 2024</CardDescription>
         </CardHeader>

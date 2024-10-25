@@ -2,7 +2,7 @@
 
 import { validatedActionWithUser } from "@/lib/auth/middleware"
 import { db } from "@/lib/db/drizzle"
-import { images, NewPost, posts, } from "@/lib/db/schema"
+import { images, NewPost, posts, PostSchema, } from "@/lib/db/schema"
 import { eq, min } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
 import { title } from "process"
@@ -77,13 +77,28 @@ export const getPosts = async () => {
     const postsDb = await db.query.posts.findMany({
         where: (posts) => eq(posts.userId, id),
         orderBy: (posts, { asc }) => [asc(posts.createdAt)]
-        
+
     })
 
 
     return postsDb
 
 }
+
+
+export const postAndImages = async (postsDb: PostSchema[]) => {
+    const postsWithImages = await Promise.all(postsDb.map(async (post) => {
+        const image = await db.select().from(images).where(eq(images.postId, post.id)).limit(1)
+        return {
+            ...post,
+            image: image[0]?.name ?? null
+        }
+
+    }))
+
+    return postsWithImages
+}
+
 
 
 const uploadImageToCloudinary = async (image: File) => {
@@ -94,7 +109,7 @@ const uploadImageToCloudinary = async (image: File) => {
 
         const base64Image = Buffer.from(buffer).toString('base64');
 
-        return await cloudinary.uploader.upload(`data:image/png;base64,${base64Image}`, {folder: "perfilya"}).then(r => r.secure_url,)
+        return await cloudinary.uploader.upload(`data:image/png;base64,${base64Image}`, { folder: "perfilya" }).then(r => r.secure_url,)
 
 
 

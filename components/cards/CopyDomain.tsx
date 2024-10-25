@@ -37,7 +37,7 @@ export default function CopyDomain() {
   return (
     <Card className="w-full max-w-md  mt-10">
       <CardHeader className="pb-3">
-        <CardTitle className="text-2xl font-bold text-orange-500 flex items-center gap-2">
+        <CardTitle className="text-2xl font-bold text-blue-500 flex items-center gap-2">
           <Globe2 className="h-6 w-6" />
           Tu dominio
         </CardTitle>

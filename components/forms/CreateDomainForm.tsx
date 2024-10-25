@@ -24,7 +24,7 @@ export const CreateDomainForm = () => {
             name="domain"
           />
         </div>
-        <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+        <Button className="bg-blue-500 hover:bg-blue-600 text-white">
           Crea tu propio dominio
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>

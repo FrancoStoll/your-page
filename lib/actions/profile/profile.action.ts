@@ -78,10 +78,8 @@ export const getDomainByName = async (name: string) => {
 
     }))
 
-
     if (!domain) return null
 
-   
 
     return {
         ...domain[0],
